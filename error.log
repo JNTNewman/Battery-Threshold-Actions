@@ -1,9 +1,1 @@
-
-There was an error at: 2022-03-07 08:00:28
-	Type: unknown encoding: utf-9.
-There was an error at: 2022-03-07 08:00:39
-	Type: unknown encoding: utf-9.
-There was an error at: 2022-03-07 08:01:16
-	Type: unknown encoding: utf-9.
-There was an error at: 2022-03-07 08:26:25
-	Type: name 'icon_path' is not defined.
+2022-03-10 23:54:16: [Errno 2] No such file or directory: '/mnt/LinuxData/DevEnv/python/bta@jnt.newman.com/bta/btai.config'.
