@@ -16,11 +16,14 @@ import psutil
 from plyer import notification
 import time
 import datetime
+import os
 
 
-program_path = '/mnt/LinuxData/DevEnv/python/bta@jnt.newman.com/bta'
+program_path = os.getcwd()
 config_file = program_path + '/bta.config'
 icon_root = program_path + '/icons/'
+event_file = program_path + '/event.log'
+log_file = program_path + '/error.log'
 
 while(True):
     battery = psutil.sensors_battery()
@@ -33,9 +36,9 @@ while(True):
             lt = int(info[1])
             ut = int(info[3])
             interval = int(info[5])
-            # with open("/mnt/LinuxData/DevEnv/python/bta@jnt.newman.com/bta/event.log", "a") as f:
+            # with open(event_file, "a") as f:
             #     current_timesamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            #     log_details = "{}: Lower Threshold = {}; Upper Threshold = {}; Battery Level = {}%.\n".format(current_timesamp, lt, ut, percentage)
+            #     log_details = "{}: Lower Threshold = {}; Upper Threshold = {}; Current Battery Level = {}%.\n".format(current_timesamp, lt, ut, percentage)
             #     f.write(log_details)
             #     f.close()
         if(percentage >= ut and battery.power_plugged):
@@ -61,9 +64,9 @@ while(True):
             timeout=10)
         current_timesamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         error_details = "{}: {}.\n".format(current_timesamp, str(e))
-        log_file = open("/mnt/LinuxData/DevEnv/python/bta@jnt.newman.com/bta/error.log", "a")
-        log_file.write(error_details)
-        log_file.close()
+        log = open(log_file, "a")
+        log.write(error_details)
+        log.close()
         quit()
 
     continue
